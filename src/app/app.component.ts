@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ITagModel} from './model/tag.model';
+import {ITagModel, Tag} from './model/tag.model';
 import {NgxSpinnerService} from 'ngx-spinner';
 
 
@@ -21,10 +21,11 @@ export class AppComponent implements OnInit {
     'tag 3'
   ];
 
-  listTagSaved: ITagModel[];
+  listTagSaved: ITagModel[] = [];
 
   ngOnInit(): void {
 
+    this.listTagSaved.push(new Tag('0', 'Action', 'Descr'));
   }
   toggleVideo(event: any) {
 
@@ -39,6 +40,7 @@ export class AppComponent implements OnInit {
     const reader = new FileReader();
     // @ts-ignore
     const file = event.target.files[0];
+
     reader.onloadstart = (_event) => {
       this.showvideo = true;
       this.spinner.show();
@@ -50,8 +52,6 @@ export class AppComponent implements OnInit {
     };
 
     reader.onload = (e) => { // when file has read:
-
-
       const blob = new Blob([e.target.result], {
           type: 'video'
         }), // create a blob of buffer
