@@ -1,0 +1,55 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="jumbotron text-center">
+  <h1>Media Logger</h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <input type="file" (change)="onFileChangeEvent($event)" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col d-flex justify-content-center ">
+      <video *ngIf="showvideo" width="300" height="300" controls (click)="toggleVideo($event)" id="videoPlayer" >
+        Browser not supported
+      </video>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <ul class="list-inline">
+        <li class="list-inline-item " *ngFor="let tag of listTags">
+          <a class="draggable">{{tag}}</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead class="thead-light">
+
+        <tr>
+          <th></th>
+          <th>Position</th>
+          <th>Action</th>
+          <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let tagSaved of listTagSaved">
+          <td><span class="oi oi-icon-name" title="icon name" aria-hidden="true" (click)="playFromThis(tagSaved)"></span></td>
+          <td>{{tagSaved.position}}</td>
+          <td>{{tagSaved.action}}</td>
+          <td>{{tagSaved.description}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
