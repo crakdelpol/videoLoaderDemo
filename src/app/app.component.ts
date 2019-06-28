@@ -27,9 +27,7 @@ export class AppComponent implements OnInit {
 
     this.listTagSaved.push(new Tag('0', 'Action', 'Descr'));
   }
-  toggleVideo(event: any) {
 
-  }
 
   playFromThis(tagSaved: ITagModel) {
 
